@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mapcha</string>
+    <string name="about">Acerca de</string>
+    <string name="cerca_mall">Cerca de Mall Curicó</string>
+	<string name="chat_room">Sala de Chat</string>
+    <string name="about_body">
+          <![CDATA[
+        <p>Sebastian Del Campo</p>
+        <p>Camilo Gutierrez</p>
+        <p>Tecnologias moviles 2015</p>
+    ]]></string>
+</resources>
