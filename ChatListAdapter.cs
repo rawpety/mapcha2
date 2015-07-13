@@ -12,11 +12,11 @@ using Android.Widget;
 
 namespace FabSample
 {
-	class ChatListAdapter : BaseAdapter<ListItem>
+	class ChatListAdapter : BaseAdapter<Room>
 	{
-		List<ListItem> items;
+		List<Room> items;
 		Activity context;
-		public ChatListAdapter(Activity context, List<ListItem> items)
+		public ChatListAdapter(Activity context, List<Room> items)
 			: base()
 		{
 			this.context = context;
@@ -26,7 +26,7 @@ namespace FabSample
 		{
 			return position;
 		}
-		public override ListItem this[int position]
+		public override Room this[int position]
 		{   
 			get { return items[position]; } 
 		}

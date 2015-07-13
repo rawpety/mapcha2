@@ -12,11 +12,11 @@ using Android.Widget;
 
 namespace FabSample
 {
-	class RoomListAdapter : BaseAdapter<ListItem>
+	class RoomListAdapter : BaseAdapter<Room>
 	{
-		List<ListItem> items;
+		List<Room> items;
 		Activity context;
-		public RoomListAdapter(Activity context, List<ListItem> items)
+		public RoomListAdapter(Activity context, List<Room> items)
 			: base()
 		{
 			this.context = context;
@@ -26,7 +26,7 @@ namespace FabSample
 		{
 			return position;
 		}
-		public override ListItem this[int position]
+		public override Room this[int position]
 		{   
 			get { return items[position]; } 
 		}
@@ -41,7 +41,17 @@ namespace FabSample
 			if (view == null)
 				view = context.LayoutInflater.Inflate(Resource.Layout.RoomItem, null);
 			view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Title;
-			view.FindViewById<TextView>(Resource.Id.Text2).Text = item.SubTitle;
+			switch (item.CommentsCount) {
+			case("0"):
+				view.FindViewById<TextView> (Resource.Id.Text2).Text = "0 Comentarios";
+				break;
+			case("1"):
+				view.FindViewById<TextView> (Resource.Id.Text2).Text = "1 Comentario";
+				break;
+			default:
+				view.FindViewById<TextView> (Resource.Id.Text2).Text = item.CommentsCount + " Comentarios";
+				break;
+			}
 			view.FindViewById<ImageView>(Resource.Id.Icon).SetImageResource(item.ImageResourceId);
 
 			return view;

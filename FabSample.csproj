@@ -80,6 +80,10 @@
     <Reference Include="GooglePlayServicesLib">
       <HintPath>packages\Xamarin.GooglePlayServices.22.0.0.2\lib\MonoAndroid41\GooglePlayServicesLib.dll</HintPath>
     </Reference>
+    <Reference Include="System.Json" />
+    <Reference Include="RestSharp.MonoDroid">
+      <HintPath>Components\restsharp-105.0.1.0\lib\android\RestSharp.MonoDroid.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DividerItemDecoration.cs" />
@@ -89,11 +93,15 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ErrorDialogFragment.cs" />
-    <Compile Include="ListItem.cs" />
     <Compile Include="RoomListAdapter.cs" />
     <Compile Include="RoomChatActivity.cs" />
     <Compile Include="RoomChatFragment.cs" />
     <Compile Include="ChatListAdapter.cs" />
+    <Compile Include="Room.cs" />
+    <Compile Include="RestClient.cs" />
+    <Compile Include="NewRoomActivity.cs" />
+    <Compile Include="NewRoomFragment.cs" />
+    <Compile Include="Message.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -171,6 +179,10 @@
   <ItemGroup>
     <XamarinComponentReference Include="googleplayservices">
       <Version>22.0.0.0</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="restsharp">
+      <Version>105.0.1.0</Version>
       <Visible>False</Visible>
     </XamarinComponentReference>
   </ItemGroup>

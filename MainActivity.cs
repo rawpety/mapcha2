@@ -140,7 +140,7 @@ namespace FabSample
 
 	  public class ListViewFragment : Android.Support.V4.App.ListFragment, IScrollDirectorListener, AbsListView.IOnScrollListener
 	  {
-		List<ListItem> ListItems = new List<ListItem>();
+		List<Room> ListItems = new List<Room>();
 
 	    public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	    {
@@ -148,14 +148,7 @@ namespace FabSample
 
 	      var list = root.FindViewById<ListView>(Android.Resource.Id.List);
 	      
-			String[] titles = new String[] { "Día del Fan en París! 40% OFF en toda la Ropa", "Protesta de empleados de Jumbo", "Matrículas AIEP", "Cine 8D Habilitado!!!", "En Clases"};
-			String[] subtitles = new String[] { "20 comentarios", "57 comentarios", "85 comentarios", "12 comentarios", "0 comentarios"};
-
-			int i = 0;
-			foreach (var title in titles)
-			{
-				ListItems.Add(new ListItem() { Title = title, SubTitle = subtitles[i++], ImageResourceId = Resource.Drawable.Icon });
-			}
+			ListItems = RestClient.Instance().getAllRooms();
 
 			var ListAdapter = new RoomListAdapter(Activity, ListItems);
 
@@ -165,7 +158,11 @@ namespace FabSample
 	      fab.AttachToListView(list, this, this);
 	      fab.Click += (sender, args) =>
 	        {
-	          Toast.MakeText(Activity, "FAB Clicked!", ToastLength.Short).Show();
+	          	Toast.MakeText(Activity, "FAB Clicked!", ToastLength.Short).Show();
+				var intent = new Intent();
+
+				intent.SetClass(Activity, typeof(NewRoomActivity));
+				StartActivity(intent);
 	        };
 	      return root;
 	    }

@@ -16,7 +16,7 @@ namespace FabSample
 	public class RoomChatFragment : ListFragment
 	{
 		public int ShownPlayId { get { return Arguments.GetInt("current_play_id", 0); } }
-		List<ListItem> ListItems = new List<ListItem>();
+		List<Room> ListItems = new List<Room>();
 		public static RoomChatFragment NewInstance(int playId)
 		{
 			var detailsFrag = new RoomChatFragment { Arguments = new Bundle() };
@@ -57,7 +57,7 @@ namespace FabSample
 			int i = 0;
 			foreach (var title in titles)
 			{
-				ListItems.Add(new ListItem() { Title = title, SubTitle = subtitles[i++], ImageResourceId = Resource.Drawable.Icon });
+				ListItems.Add(new Room() { Title = title, CommentsCount = subtitles[i++], ImageResourceId = Resource.Drawable.Icon });
 			}
 
 			ListAdapter = new ChatListAdapter(Activity, ListItems);
