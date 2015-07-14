@@ -26,6 +26,8 @@ namespace FabSample
 		Button button;
 		TextView latitude;
 		TextView longitude;
+		String s_longitude;
+		String s_latitude;
 
 
 		protected override void OnCreate (Bundle savedInstanceState)
@@ -59,9 +61,9 @@ namespace FabSample
 			// initialize location manager
 			locMgr = GetSystemService (Context.LocationService) as LocationManager;
 
-			if (locMgr.AllProviders.Contains (LocationManager.NetworkProvider)
-				&& locMgr.IsProviderEnabled (LocationManager.NetworkProvider)) {
-				locMgr.RequestLocationUpdates (LocationManager.NetworkProvider, 2000, 1, this);
+			if (locMgr.AllProviders.Contains (LocationManager.GpsProvider)
+				&& locMgr.IsProviderEnabled (LocationManager.GpsProvider)) {
+				locMgr.RequestLocationUpdates (LocationManager.GpsProvider, 2000, 1, this);
 			} else {
 				Toast.MakeText (this, "The Network Provider does not exist or is not enabled!", ToastLength.Long).Show ();
 			}
@@ -93,6 +95,8 @@ namespace FabSample
 			Log.Debug (tag, "Location changed");
 			latitude.Text = "Latitude: " + location.Latitude.ToString();
 			longitude.Text = "Longitude: " + location.Longitude.ToString();
+			this.s_latitude = location.Latitude.ToString ();
+			this.s_longitude = location.Longitude.ToString ();
 		}
 		public void OnProviderDisabled (string provider)
 		{
@@ -133,11 +137,14 @@ namespace FabSample
 			if(item.ItemId == Resource.Id.action_new_room)
 			{
 				EditText t = (EditText)FindViewById(Resource.Id.editText1);
-				Toast.MakeText(this.BaseContext, t.Text, ToastLength.Short).Show();
+				RestClient.Instance ().newRoom (t.Text, this.s_latitude, this.s_longitude, "dqw12d81d2");
+				Toast.MakeText(this.BaseContext, "Sala Creada", ToastLength.Short).Show();
+				this.Finish ();
 			}
 			if(item.ItemId == Resource.Id.home)
 			{
 				Toast.MakeText(this.BaseContext, "jom", ToastLength.Short).Show();
+				this.Finish ();
 			}
 			return base.OnOptionsItemSelected(item);
 		}

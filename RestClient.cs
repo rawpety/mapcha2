@@ -52,5 +52,15 @@ namespace FabSample
 				
 			return Messages;
 		}
+
+		public void newRoom(string Title, string Latitude, string Longitude, string AuthorId){
+			var request = new RestRequest("mapcha/Room/new.php", Method.POST);
+			request.AddParameter ("title", Title);
+			request.AddParameter ("latitude", Latitude);
+			request.AddParameter ("longitude", Longitude);
+			request.AddParameter ("author_id", AuthorId);
+
+			var response = client.Execute (request);
+		}
 	}
 }
