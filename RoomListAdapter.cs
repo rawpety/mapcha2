@@ -41,17 +41,7 @@ namespace FabSample
 			if (view == null)
 				view = context.LayoutInflater.Inflate(Resource.Layout.RoomItem, null);
 			view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Title;
-			switch (item.CommentsCount) {
-			case("0"):
-				view.FindViewById<TextView> (Resource.Id.Text2).Text = "0 Comentarios";
-				break;
-			case("1"):
-				view.FindViewById<TextView> (Resource.Id.Text2).Text = "1 Comentario";
-				break;
-			default:
-				view.FindViewById<TextView> (Resource.Id.Text2).Text = item.CommentsCount + " Comentarios";
-				break;
-			}
+			view.FindViewById<TextView> (Resource.Id.Text2).Text = item.CommentsCount;
 			view.FindViewById<ImageView>(Resource.Id.Icon).SetImageResource(item.ImageResourceId);
 
 			return view;

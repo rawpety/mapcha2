@@ -19,7 +19,25 @@ namespace FabSample
 		public double Latitude { get; set; }
 		public double Longitude { get; set; }
 		public DateTime	CreationDate { get; set; }
-		public string CommentsCount { get; set; }
+		private String comments;
+		public string CommentsCount { 
+			get{ 
+				return comments;
+			}
+			set{
+				switch (value) {
+				case("0"):
+					comments = "0 Comentarios";
+					break;
+				case("1"):
+					comments = "1 Comentario";
+					break;
+				default:
+					comments = value + " Comentarios";
+					break;
+				}
+			}
+		}
 
 		public int ImageResourceId { get; set; }
 
