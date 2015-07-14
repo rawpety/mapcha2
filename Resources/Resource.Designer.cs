@@ -1699,11 +1699,11 @@ namespace FabSample
 			// aapt resource value: 0x7f0b0055
 			public const int Text1 = 2131427413;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int Text2 = 2131427424;
+			// aapt resource value: 0x7f0b0066
+			public const int Text2 = 2131427430;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int about = 2131427426;
+			// aapt resource value: 0x7f0b0068
+			public const int about = 2131427432;
 			
 			// aapt resource value: 0x7f0b0046
 			public const int action_bar = 2131427398;
@@ -1744,8 +1744,8 @@ namespace FabSample
 			// aapt resource value: 0x7f0b0035
 			public const int action_mode_close_button = 2131427381;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int action_new_room = 2131427427;
+			// aapt resource value: 0x7f0b0069
+			public const int action_new_room = 2131427433;
 			
 			// aapt resource value: 0x7f0b0036
 			public const int activity_chooser_view_content = 2131427382;
@@ -1801,6 +1801,9 @@ namespace FabSample
 			// aapt resource value: 0x7f0b001c
 			public const int dropdown = 2131427356;
 			
+			// aapt resource value: 0x7f0b0062
+			public const int editText1 = 2131427426;
+			
 			// aapt resource value: 0x7f0b0048
 			public const int edit_query = 2131427400;
 			
@@ -1846,11 +1849,20 @@ namespace FabSample
 			// aapt resource value: 0x7f0b0038
 			public const int image = 2131427384;
 			
+			// aapt resource value: 0x7f0b0064
+			public const int latitude = 2131427428;
+			
+			// aapt resource value: 0x7f0b0060
+			public const int linearLayout1 = 2131427424;
+			
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
 			
 			// aapt resource value: 0x7f0b003a
 			public const int list_item = 2131427386;
+			
+			// aapt resource value: 0x7f0b0065
+			public const int longitude = 2131427429;
 			
 			// aapt resource value: 0x7f0b005a
 			public const int mapWithOverlay = 2131427418;
@@ -1975,11 +1987,17 @@ namespace FabSample
 			// aapt resource value: 0x7f0b0022
 			public const int terrain = 2131427362;
 			
+			// aapt resource value: 0x7f0b0061
+			public const int textView1 = 2131427425;
+			
+			// aapt resource value: 0x7f0b0063
+			public const int textView2 = 2131427427;
+			
 			// aapt resource value: 0x7f0b003c
 			public const int title = 2131427388;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int titles_fragment = 2131427425;
+			// aapt resource value: 0x7f0b0067
+			public const int titles_fragment = 2131427431;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;

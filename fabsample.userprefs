@@ -1,5 +1,6 @@
 ﻿<Properties StartupItem="FabSample.csproj" GitUserInfo="UsingGIT">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
   <MonoDevelop.Ide.Workbench ActiveDocument="NewRoomActivity.cs">
     <Files>
@@ -14,12 +15,20 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.F5AZFG03L138" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Resources\menu\NewRoomActions.xml">
     <Files>
+=======
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.F5AZFG03L138" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Resources\menu\NewRoomActions.xml">
+    <Files>
+>>>>>>> 2f2aef202d5a1e97b0a9cd38e4e5d5d9d6852044
       <File FileName="RoomChatActivity.cs" Line="30" Column="2" />
       <File FileName="RoomListAdapter.cs" Line="1" Column="1" />
       <File FileName="MainActivity.cs" Line="1" Column="1" />
       <File FileName="Room.cs" Line="1" Column="1" />
       <File FileName="RestClient.cs" Line="24" Column="4" />
       <File FileName="Resources\menu\NewRoomActions.xml" Line="2" Column="1" />
+<<<<<<< HEAD
+>>>>>>> 2f2aef202d5a1e97b0a9cd38e4e5d5d9d6852044
+=======
 >>>>>>> 2f2aef202d5a1e97b0a9cd38e4e5d5d9d6852044
     </Files>
   </MonoDevelop.Ide.Workbench>
