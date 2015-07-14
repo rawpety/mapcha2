@@ -163,11 +163,17 @@
     <AndroidResource Include="Resources\layout\RoomItem.axml" />
     <AndroidResource Include="Resources\layout\RoomList.axml" />
     <AndroidResource Include="Resources\drawable\bubble_white_normal.9.png" />
-    <AndroidResource Include="Resources\drawable\Icon.png" />
     <AndroidResource Include="Resources\layout\ChatItem.axml" />
     <AndroidResource Include="Resources\layout\ChatList.axml" />
     <AndroidResource Include="Resources\layout\NewRoom.axml" />
     <AndroidResource Include="Resources\menu\NewRoomActions.xml" />
+    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
