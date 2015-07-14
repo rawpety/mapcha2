@@ -12,36 +12,36 @@ using Android.Widget;
 
 namespace FabSample
 {
-	class ChatListAdapter : BaseAdapter<Room>
+	class ChatListAdapter : BaseAdapter<Message>
 	{
-		List<Room> items;
+		List<Message> Messages;
 		Activity context;
-		public ChatListAdapter(Activity context, List<Room> items)
+		public ChatListAdapter(Activity context, List<Message> Messages)
 			: base()
 		{
 			this.context = context;
-			this.items = items;
+			this.Messages = Messages;
 		}
 		public override long GetItemId(int position)
 		{
 			return position;
 		}
-		public override Room this[int position]
+		public override Message this[int position]
 		{   
-			get { return items[position]; } 
+			get { return Messages[position]; } 
 		}
 		public override int Count {
-			get { return items.Count; } 
+			get { return Messages.Count; } 
 		}
 		public override View GetView(int position, View convertView, ViewGroup parent)
 		{
-			var item = items[position];
+			var item = Messages[position];
 			//View view = context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem2, null);
 			View view = convertView;
 			if (view == null)
 				view = context.LayoutInflater.Inflate(Resource.Layout.ChatItem, null);
-			view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Title;
-			view.FindViewById<ImageView>(Resource.Id.Icon).SetImageResource(item.ImageResourceId);
+			view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Content;
+			view.FindViewById<ImageView>(Resource.Id.Icon).SetImageResource(Resource.Drawable.Icon);
 
 			return view;
 		}

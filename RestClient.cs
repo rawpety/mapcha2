@@ -24,12 +24,16 @@ namespace FabSample
 		}
 
 		public List<Room> getAllRooms(){
-			var request = new RestRequest("mapcha/Room/all.php", Method.GET);
+			var request = new RestRequest ("mapcha/Room/all.php", Method.GET);
 
 			var response = client.Execute (request);
 
-			RestSharp.Deserializers.JsonDeserializer deserial= new JsonDeserializer();
-			List<Room> rooms = deserial.Deserialize<List<Room>> (response);
+			RestSharp.Deserializers.JsonDeserializer deserial = new JsonDeserializer ();
+			List<Room> rooms = new List<Room> ();
+
+			if (response.Content.Length != 6) {
+				rooms = deserial.Deserialize<List<Room>> (response);
+			}
 			return rooms;
 		}
 
@@ -40,7 +44,12 @@ namespace FabSample
 			var response = client.Execute (request);
 
 			RestSharp.Deserializers.JsonDeserializer deserial= new JsonDeserializer();
-			List<Message> Messages = deserial.Deserialize<List<Message>> (response);
+			List<Message> Messages = new List<Message> ();
+
+			if (response.Content.Length != 6) {
+				Messages = deserial.Deserialize<List<Message>> (response);
+			}
+				
 			return Messages;
 		}
 	}
