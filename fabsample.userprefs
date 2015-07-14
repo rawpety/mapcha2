@@ -1,25 +1,11 @@
 ﻿<Properties StartupItem="FabSample.csproj" GitUserInfo="UsingGIT">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.59.103:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="RestClient.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
     <Files>
-      <File FileName="RoomChatActivity.cs" Line="30" Column="2" />
-      <File FileName="RoomListAdapter.cs" Line="1" Column="1" />
-      <File FileName="MainActivity.cs" Line="151" Column="40" />
+      <File FileName="RoomChatActivity.cs" Line="31" Column="2" />
+      <File FileName="MainActivity.cs" Line="236" Column="4" />
       <File FileName="Room.cs" Line="32" Column="40" />
-      <File FileName="RestClient.cs" Line="24" Column="29" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="fabsample" expanded="True">
-            <Node name="FabSample" expanded="True">
-              <Node name="ComponentReferenceFolder" expanded="True" />
-              <Node name="RestClient.cs" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
