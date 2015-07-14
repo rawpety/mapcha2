@@ -1,10 +1,14 @@
 ﻿<Properties StartupItem="FabSample.csproj" GitUserInfo="UsingGIT">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.59.103:5555" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MainActivity.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="NewRoomActivity.cs">
     <Files>
       <File FileName="RoomChatActivity.cs" Line="31" Column="2" />
-      <File FileName="MainActivity.cs" Line="236" Column="4" />
-      <File FileName="Room.cs" Line="32" Column="40" />
+      <File FileName="MainActivity.cs" Line="1" Column="1" />
+      <File FileName="Room.cs" Line="25" Column="21" />
+      <File FileName="Resources\values\colors.xml" Line="3" Column="34" />
+      <File FileName="RoomListAdapter.cs" Line="40" Column="10" />
+      <File FileName="Resources\menu\NewRoomActions.xml" Line="7" Column="41" />
+      <File FileName="NewRoomActivity.cs" Line="14" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

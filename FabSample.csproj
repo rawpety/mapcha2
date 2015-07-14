@@ -167,6 +167,11 @@
     <AndroidResource Include="Resources\layout\ChatItem.axml" />
     <AndroidResource Include="Resources\layout\ChatList.axml" />
     <AndroidResource Include="Resources\layout\NewRoom.axml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_create_white_24dp.png" />
+    <AndroidResource Include="Resources\drawable-xxxhdpi\ic_create_white_24dp.png" />
     <AndroidResource Include="Resources\menu\NewRoomActions.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
