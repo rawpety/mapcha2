@@ -28,12 +28,10 @@ namespace FabSample
 		private bool _isGooglePlayServicesInstalled;
 
 
-
 	    protected override void OnCreate(Bundle bundle)
 	    {
 	      	base.OnCreate(bundle);
 			InitActionBar();
-
 			_isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled();
 
 			if (_isGooglePlayServicesInstalled)
@@ -140,7 +138,8 @@ namespace FabSample
 
 	  public class ListViewFragment : Android.Support.V4.App.ListFragment, IScrollDirectorListener, AbsListView.IOnScrollListener
 	  {
-		List<Room> ListItems = new List<Room>();
+		private List<Room> rooms;
+
 
 	    public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	    {
@@ -148,9 +147,9 @@ namespace FabSample
 
 	      var list = root.FindViewById<ListView>(Android.Resource.Id.List);
 	      
-			ListItems = RestClient.Instance().getAllRooms();
+			rooms = RestClient.Instance().getAllRooms();
 
-			var ListAdapter = new RoomListAdapter(Activity, ListItems);
+			var ListAdapter = new RoomListAdapter(Activity, rooms);
 
 			list.Adapter = ListAdapter;
 
@@ -191,12 +190,13 @@ namespace FabSample
 	      Console.WriteLine("ListViewFragment: OnScrollChanged");
 	    }
 
-		private void ShowDetails(int playId)
+		private void ShowDetails(int position)
 		{
 			var intent = new Intent();
 
 			intent.SetClass(Activity, typeof(RoomChatActivity));
-			intent.PutExtra("current_play_id", playId);
+			intent.PutExtra ("RoomId", rooms[position].Id);
+			intent.PutExtra ("RoomName", rooms[position].Title);
 			StartActivity(intent);
 		}
 	  }

@@ -19,9 +19,10 @@ namespace FabSample
 		protected override void OnCreate(Bundle bundle)
 		{
 			base.OnCreate(bundle);
-			var index = Intent.Extras.GetInt("current_play_id", 0);
-			SetTitle (Resource.String.chat_room);
-			var details = RoomChatFragment.NewInstance(index); // Details
+			int RoomId = Intent.Extras.GetInt("RoomId");
+			String title = Intent.Extras.GetString("RoomName");
+			Title = title;
+			var details = RoomChatFragment.NewInstance(RoomId); // Details
 			var fragmentTransaction = FragmentManager.BeginTransaction();
 			fragmentTransaction.Add(Android.Resource.Id.Content, details);
 			fragmentTransaction.Commit();
