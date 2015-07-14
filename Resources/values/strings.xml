@@ -4,6 +4,8 @@
     <string name="about">Acerca de</string>
     <string name="cerca_mall">Cerca de Mall Curicó</string>
 	<string name="chat_room">Sala de Chat</string>
+	<string name="new_room">Crear nueva sala</string>
+	<string name="action_new_room">Crear nueva sala</string>
     <string name="about_body">
           <![CDATA[
         <p>Sebastian Del Campo</p>

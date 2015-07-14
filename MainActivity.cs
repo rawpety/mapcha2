@@ -158,7 +158,6 @@ namespace FabSample
 	      fab.AttachToListView(list, this, this);
 	      fab.Click += (sender, args) =>
 	        {
-	          	Toast.MakeText(Activity, "FAB Clicked!", ToastLength.Short).Show();
 				var intent = new Intent();
 
 				intent.SetClass(Activity, typeof(NewRoomActivity));
