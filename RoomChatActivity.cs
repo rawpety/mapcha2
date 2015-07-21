@@ -20,13 +20,15 @@ namespace FabSample
 	[Activity(Label = "RoomChatActivity")]
 	public class RoomChatActivity : ActionBarActivity
 	{
+		int RoomId;
+		String title;
+
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 
-
 			base.OnCreate(savedInstanceState);
-			int RoomId = Intent.Extras.GetInt("RoomId");
-			String title = Intent.Extras.GetString("RoomName");
+			RoomId = Intent.Extras.GetInt("RoomId");
+			title = Intent.Extras.GetString("RoomName");
 			Title = title;
 
 
@@ -44,12 +46,18 @@ namespace FabSample
 		{
 			MenuInflater.Inflate (Resource.Menu.RoomChatActions, menu);
 
+			ChatRoomData crd = RestClient.Instance().getMessagesByRoom (RoomId);
+
+			menu.FindItem(Resource.Id.action_up_vote).SetEnabled(crd.Available);
+			menu.FindItem(Resource.Id.action_down_vote).SetEnabled(crd.Available);
+
 			return base.OnCreateOptionsMenu(menu);
 
 		}
 
 		public override bool OnOptionsItemSelected(IMenuItem item)
 		{
+
 			if(item.ItemId == Resource.Id.action_up_vote)
 			{
 				Toast.MakeText(this.BaseContext, "Up Vote", ToastLength.Short).Show();
@@ -60,7 +68,6 @@ namespace FabSample
 			}
 			else
 			{
-				Toast.MakeText(this.BaseContext, item.ToString(), ToastLength.Short).Show();
 				this.Finish ();
 			}
 			return base.OnOptionsItemSelected(item);

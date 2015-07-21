@@ -220,11 +220,11 @@ namespace FabSample
 	public class ListViewFragment : Android.Support.V4.App.ListFragment, IScrollDirectorListener, AbsListView.IOnScrollListener
 	{
 		private List<Room> rooms;
-
+		private View root;
 
 		public override View OnCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 		{
-			var root = inflater.Inflate (Resource.Layout.fragment_listview, container, false);
+			root = inflater.Inflate (Resource.Layout.fragment_listview, container, false);
 
 			var list = root.FindViewById<ListView> (Android.Resource.Id.List);
 	      
@@ -234,17 +234,31 @@ namespace FabSample
 
 			list.Adapter = ListAdapter;
 
-	      var fab = root.FindViewById<FloatingActionButton>(Resource.Id.fab);
-	      fab.AttachToListView(list, this, this);
-	      fab.Click += (sender, args) =>
+	      	var fab = root.FindViewById<FloatingActionButton>(Resource.Id.fab);
+      		fab.AttachToListView(list, this, this);
+	      	fab.Click += (sender, args) =>
 	        {
 				var intent = new Intent();
-
 
 				intent.SetClass (Activity, typeof(NewRoomActivity));
 				StartActivity (intent);
 			};
 			return root;
+		}
+
+		public override void OnResume ()
+		{
+			base.OnResume (); 
+
+			var list = root.FindViewById<ListView> (Android.Resource.Id.List);
+
+			rooms = RestClient.Instance ().getAllRooms ();
+
+			var ListAdapter = new RoomListAdapter (Activity, rooms);
+
+			list.Adapter = ListAdapter;
+
+			ListAdapter.NotifyDataSetChanged ();
 		}
 
 		public void OnScrollDown ()
@@ -281,6 +295,8 @@ namespace FabSample
 			intent.PutExtra ("RoomName", rooms [position].Title);
 			StartActivity (intent);
 		}
+
+
 	}
 
 	public class MapViewFragment : Android.Support.V4.App.Fragment, IScrollDirectorListener, IOnMapReadyCallback
