@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using Android.Util;
 
 namespace FabSample
 {
@@ -20,6 +21,8 @@ namespace FabSample
 		public double Longitude { get; set; }
 		public DateTime	CreationDate { get; set; }
 		private String comments;
+		private int commentsCount;
+		private int image;
 
 		private int votes;
 		public int	Votes {
@@ -59,6 +62,7 @@ namespace FabSample
 				return comments;
 			}
 			set{
+				Int32.TryParse(value, out commentsCount);
 				switch (value) {
 				case("0"):
 					comments = "0 Comentarios";
@@ -73,7 +77,26 @@ namespace FabSample
 			}
 		}
 
-		public int ImageResourceId { get; set; }
+		public int ImageResourceId { 
+			get{ 
+				if (this.commentsCount > 10) {
+					image = Resource.Drawable.ic_whatshot_black_48dp;
+				}
+				else if(CreationDate.Date == DateTime.Now.Date)
+				{
+					image = Resource.Drawable.ic_new_releases_black_48dp;
+				}
+				else {
+
+					image = Resource.Drawable.ic_chat_black_48dp;
+				}
+				Log.Debug ("room", "votes: " + votes + " image: " +image.ToString());
+				return image;
+			}
+
+			set{ }
+
+		}
 
 		public override string ToString() 
 		{
