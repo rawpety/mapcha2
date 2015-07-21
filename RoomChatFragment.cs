@@ -40,6 +40,7 @@ namespace FabSample
 			button.Click += (sender, ea) => {
 				RestClient.Instance().newMessage(RoomId, et.Text);
 				et.Text = "";
+				UpdateList();
 			};
 
 			if (!crd.Available) {
@@ -49,9 +50,13 @@ namespace FabSample
 				button.Enabled = false;
 			}
 
+			MessagesListView = (ListView)View.FindViewById (Resource.Id.MessagesList);
+			MessagesListView.Adapter = new ChatListAdapter(Activity, Messages);
+		}
 
-
-
+		public void UpdateList(){
+			ChatRoomData crd = RestClient.Instance().getMessagesByRoom (RoomId);
+			Messages = crd.Messages;
 			MessagesListView = (ListView)View.FindViewById (Resource.Id.MessagesList);
 			MessagesListView.Adapter = new ChatListAdapter(Activity, Messages);
 		}
