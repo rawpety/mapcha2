@@ -76,5 +76,23 @@ namespace FabSample
 
 			var response = client.Execute (request);
 		}
+
+		public void votePositive(int RoomId){
+			var request = new RestRequest("mapcha/Votes/vote.php", Method.POST);
+			request.AddParameter ("Room_Id", RoomId);
+			request.AddParameter ("Author_Id", MainActivity.android_id);
+			request.AddParameter ("Vote", "1");
+
+			var response = client.Execute (request);
+		}
+
+		public void voteNegative(int RoomId){
+			var request = new RestRequest("mapcha/Votes/vote.php", Method.POST);
+			request.AddParameter ("Room_Id", RoomId);
+			request.AddParameter ("Author_Id", MainActivity.android_id);
+			request.AddParameter ("Vote", "-1");
+
+			var response = client.Execute (request);
+		}
 	}
 }

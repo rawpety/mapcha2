@@ -28,7 +28,7 @@ namespace FabSample
 		public static readonly int InstallGooglePlayServicesId = 1000;
 		public static readonly string Tag = "MapchaDemo";
 		public static LocationManager locMgr;
-
+		public static string android_id;
 		public static Location _currentLocation;
 
 		public static Location lastKnownLocation = new Location("provider");
@@ -42,7 +42,8 @@ namespace FabSample
 			base.OnCreate (bundle);
 			InitActionBar ();
 			_isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled ();
-
+			android_id = Android.Provider.Settings.Secure.GetString(Context.ContentResolver,
+				Android.Provider.Settings.Secure.AndroidId); 
 			if (_isGooglePlayServicesInstalled) {
 				//SetContentView(Resource.Layout.Main);
 				//InitMapFragment();
