@@ -41,7 +41,7 @@ namespace FabSample
 			if (view == null)
 				view = context.LayoutInflater.Inflate(Resource.Layout.RoomItem, null);
 			view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Title;
-			view.FindViewById<TextView> (Resource.Id.Text2).Text = item.CommentsCount;
+			view.FindViewById<TextView> (Resource.Id.Text2).Text = item.CommentsCount + "\t\t" + item.PointsCount;
 			view.FindViewById<ImageView>(Resource.Id.Icon).SetImageResource(item.ImageResourceId);
 
 			return view;

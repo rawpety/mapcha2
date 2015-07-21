@@ -20,6 +20,40 @@ namespace FabSample
 		public double Longitude { get; set; }
 		public DateTime	CreationDate { get; set; }
 		private String comments;
+
+		private int votes;
+		public int	Votes {
+			get{ 
+				return votes;
+			}
+			set{
+				votes = value;
+				PointsCount = value +"";
+			}
+		}
+		private String points;
+		public String PointsCount{
+			get{
+				return points;
+			}
+			set{
+				switch (value) {
+				case("0"):
+					points = "0 Puntos";
+					break;
+				case("1"):
+					points = "1 Punto";
+					break;
+				case("-1"):
+					points = "-1 Punto";
+					break;
+				default:
+					points = value + " Puntos";
+					break;
+				}
+			}
+		}
+
 		public string CommentsCount { 
 			get{ 
 				return comments;
