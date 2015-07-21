@@ -29,7 +29,7 @@ namespace FabSample
 		public static readonly string Tag = "MapchaDemo";
 		public static LocationManager locMgr;
 		public static string android_id;
-		public static Location _currentLocation;
+		public static Location _currentLocation = new Location("provider");
 
 		public static Location lastKnownLocation = new Location("provider");
 
@@ -70,8 +70,8 @@ namespace FabSample
 			Log.Debug (Tag, "OnResume called");
 
 
-			lastKnownLocation.Latitude = -35.0019129;
-			lastKnownLocation.Longitude = -71.2300759;
+			lastKnownLocation.Latitude = -34.998941965558;
+			lastKnownLocation.Longitude = -71.2445449777383;
 
 			// initialize location manager
 			locMgr = GetSystemService (Context.LocationService) as LocationManager;
@@ -121,6 +121,7 @@ namespace FabSample
 		{
 			Log.Debug (Tag, "Location changed");
 			_currentLocation = location;
+			lastKnownLocation = location;
 
 		}
 		public void OnProviderDisabled (string provider)
