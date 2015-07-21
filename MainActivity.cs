@@ -18,14 +18,21 @@ using RecyclerView = Android.Support.V7.Widget.RecyclerView;
 using System.Collections.Generic;
 using Java.Lang;
 using System.Collections.Concurrent;
+using Android.Locations;
 
 namespace FabSample
 {
 	[Activity (Label = "Mapcha", MainLauncher = true, Icon = "@drawable/ic_launcher")]
-	public class MainActivity : ActionBarActivity, ActionBar.ITabListener
+	public class MainActivity : ActionBarActivity, ActionBar.ITabListener, ILocationListener
 	{
 		public static readonly int InstallGooglePlayServicesId = 1000;
 		public static readonly string Tag = "MapchaDemo";
+		public static LocationManager locMgr;
+
+		public static Location _currentLocation;
+
+		public static Location lastKnownLocation = new Location("provider");
+
 
 		private bool _isGooglePlayServicesInstalled;
 
@@ -46,6 +53,86 @@ namespace FabSample
 			}
 
 	      
+		}
+
+		protected override void OnStart ()
+		{
+			base.OnStart ();
+			Log.Debug (Tag, "OnStart called");
+		}
+
+		// OnResume gets called every time the activity starts, so we'll put our RequestLocationUpdates
+		// code here, so that 
+		protected override void OnResume ()
+		{
+			base.OnResume (); 
+			Log.Debug (Tag, "OnResume called");
+
+
+			lastKnownLocation.Latitude = -35.0019129;
+			lastKnownLocation.Longitude = -71.2300759;
+
+			// initialize location manager
+			locMgr = GetSystemService (Context.LocationService) as LocationManager;
+
+			//const string locationProvider = LocationManager.NetworkProvider;
+			// Or use LocationManager.GPS_PROVIDER
+
+			/*if (locMgr.AllProviders.Contains (locationProvider)
+				&& locMgr.IsProviderEnabled (locationProvider)) {
+				locMgr.RequestLocationUpdates (locationProvider, 2000, 1, this);
+			} else {
+				Toast.MakeText (this, "The Network Provider does not exist or is not enabled!", ToastLength.Long).Show ();
+			}*/
+
+			var locationCriteria = new Criteria();
+			locationCriteria.Accuracy = Accuracy.Coarse;
+			locationCriteria.PowerRequirement = Power.Medium;
+			string locationProvider = locMgr.GetBestProvider(locationCriteria, true);
+			Log.Debug(Tag, "Starting location updates with " + locationProvider.ToString());
+			locMgr.RequestLocationUpdates (locationProvider, 2000, 1, this);
+
+			lastKnownLocation = locMgr.GetLastKnownLocation(locationProvider);
+
+		}
+
+		protected override void OnPause ()
+		{
+			base.OnPause ();
+
+			// stop sending location updates when the application goes into the background
+			// to learn about updating location in the background, refer to the Backgrounding guide
+			// http://docs.xamarin.com/guides/cross-platform/application_fundamentals/backgrounding/
+
+
+			// RemoveUpdates takes a pending intent - here, we pass the current Activity
+			locMgr.RemoveUpdates (this);
+			Log.Debug (Tag, "Location updates paused because application is entering the background");
+		}
+
+		protected override void OnStop ()
+		{
+			base.OnStop ();
+			Log.Debug (Tag, "OnStop called");
+		}
+
+		public void OnLocationChanged (Android.Locations.Location location)
+		{
+			Log.Debug (Tag, "Location changed");
+			_currentLocation = location;
+
+		}
+		public void OnProviderDisabled (string provider)
+		{
+			Log.Debug (Tag, provider + " disabled by user");
+		}
+		public void OnProviderEnabled (string provider)
+		{
+			Log.Debug (Tag, provider + " enabled by user");
+		}
+		public void OnStatusChanged (string provider, Availability status, Bundle extras)
+		{
+			Log.Debug (Tag, provider + " availability has changed to " + status);
 		}
 
 		private bool TestIfGooglePlayServicesIsInstalled ()
@@ -241,14 +328,20 @@ namespace FabSample
 			}
 
 			googleMap.InfoWindowClick += MapOnInfoWindowClick;
-			Marker mylocation = googleMap.AddMarker (new MarkerOptions ()
-				.SetPosition (Location_UTalca)
-				.SetTitle ("Yo")
-				.InvokeIcon (BitmapDescriptorFactory.DefaultMarker (BitmapDescriptorFactory.HueAzure))
-			);
-			mylocation.ShowInfoWindow ();
-			MarkerData[mylocation.Id] = null;
-			CameraUpdate update = CameraUpdateFactory.NewLatLngZoom(Location_UTalca, 17);
+			//Marker mylocation = googleMap.AddMarker (new MarkerOptions ()
+			//	.SetPosition (Location_UTalca)
+			//	.SetTitle ("Yo")
+			//	.InvokeIcon (BitmapDescriptorFactory.DefaultMarker (BitmapDescriptorFactory.HueAzure))
+			//);
+			//mylocation.ShowInfoWindow ();
+			//MarkerData[mylocation.Id] = null;
+			CameraUpdate update = CameraUpdateFactory.NewLatLngZoom (new LatLng(MainActivity.lastKnownLocation.Latitude, MainActivity.lastKnownLocation.Longitude), 17);
+
+			if (MainActivity._currentLocation != null) {
+				LatLng current = new LatLng(MainActivity._currentLocation.Latitude, MainActivity._currentLocation.Longitude);
+				update = CameraUpdateFactory.NewLatLngZoom (current, 17);
+			}
+
 			googleMap.MoveCamera(update);
 		}
 
@@ -279,6 +372,8 @@ namespace FabSample
 		{
 			Console.WriteLine ("RecyclerViewFragment: OnScrollUp");
 		}
+
 	}
+
 }
 
