@@ -26,6 +26,7 @@ namespace FabSample
 		TextView latitude;
 		TextView longitude;
 		TextView location;
+		Location loc = new Location ("loc");
 
 
 		protected override void OnCreate (Bundle savedInstanceState)
@@ -42,7 +43,7 @@ namespace FabSample
 
 			InitActionBar ();
 
-			Location loc = new Location ("loc");
+
 
 			loc.Latitude = MainActivity.lastKnownLocation.Latitude;
 			loc.Longitude = MainActivity.lastKnownLocation.Longitude;
@@ -108,7 +109,7 @@ namespace FabSample
 			if(item.ItemId == Resource.Id.action_new_room)
 			{
 				EditText t = (EditText)FindViewById(Resource.Id.editText1);
-				RestClient.Instance ().newRoom (t.Text, MainActivity._currentLocation.Latitude.ToString(), MainActivity._currentLocation.Longitude.ToString());
+				RestClient.Instance ().newRoom (t.Text, loc.Latitude.ToString(), loc.Longitude.ToString());
 				Toast.MakeText(this.BaseContext, "Sala Creada", ToastLength.Short).Show();
 				this.Finish ();
 			}

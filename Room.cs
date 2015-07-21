@@ -79,7 +79,10 @@ namespace FabSample
 
 		public int ImageResourceId { 
 			get{ 
-				if (this.commentsCount > 10) {
+				if (this.Id == 1) {
+					image = Resource.Drawable.ic_star_black_48dp;
+				}
+				else if (this.commentsCount > 8) {
 					image = Resource.Drawable.ic_whatshot_black_48dp;
 				}
 				else if(CreationDate.Date == DateTime.Now.Date)
