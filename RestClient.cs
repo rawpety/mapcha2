@@ -67,12 +67,21 @@ namespace FabSample
 			return crd;
 		}
 
-		public void newRoom(string Title, string Latitude, string Longitude, string AuthorId){
+		public void newRoom(string Title, string Latitude, string Longitude){
 			var request = new RestRequest("mapcha/Room/new.php", Method.POST);
 			request.AddParameter ("title", Title);
 			request.AddParameter ("latitude", Latitude);
 			request.AddParameter ("longitude", Longitude);
-			request.AddParameter ("author_id", AuthorId);
+			request.AddParameter ("author_id", MainActivity.android_id);
+
+			var response = client.Execute (request);
+		}
+
+		public void newMessage(string Room_Id, string Content){
+			var request = new RestRequest("mapcha/Messages/new.php", Method.POST);
+			request.AddParameter ("Room_Id", Room_Id);
+			request.AddParameter ("Author_Id", MainActivity.android_id);
+			request.AddParameter ("Content", Content);
 
 			var response = client.Execute (request);
 		}
