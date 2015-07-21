@@ -102,6 +102,7 @@
     <Compile Include="NewRoomActivity.cs" />
     <Compile Include="NewRoomFragment.cs" />
     <Compile Include="Message.cs" />
+    <Compile Include="ChatRoomData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
