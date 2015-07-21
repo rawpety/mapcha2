@@ -19,98 +19,69 @@ using Android.Locations;
 namespace FabSample
 {
 	[Activity (Label = "NewRoomActivity")]			
-	public class NewRoomActivity : ActionBarActivity, ILocationListener
+	public class NewRoomActivity : ActionBarActivity
 	{
-		LocationManager locMgr;
-		string tag = "MainActivity";
-		Button button;
+		string Tag = "NewRoomActivity";
+
 		TextView latitude;
 		TextView longitude;
-		String s_longitude;
-		String s_latitude;
+		TextView location;
 
 
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
 
-			Log.Debug (tag, "OnCreate called");
+			Log.Debug (Tag, "OnCreate called");
 
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.NewRoom);
 			latitude = FindViewById<TextView> (Resource.Id.latitude);
 			longitude = FindViewById<TextView> (Resource.Id.longitude);
+			location = FindViewById<TextView> (Resource.Id.location);
 
 			InitActionBar ();
 
-		}
+			Location loc = new Location ("loc");
 
-		protected override void OnStart ()
-		{
-			base.OnStart ();
-			Log.Debug (tag, "OnStart called");
-		}
+			loc.Latitude = MainActivity.lastKnownLocation.Latitude;
+			loc.Longitude = MainActivity.lastKnownLocation.Longitude;
 
-		// OnResume gets called every time the activity starts, so we'll put our RequestLocationUpdates
-		// code here, so that 
-		protected override void OnResume ()
-		{
-			base.OnResume (); 
-			Log.Debug (tag, "OnResume called");
-
-			// initialize location manager
-			locMgr = GetSystemService (Context.LocationService) as LocationManager;
-
-			if (locMgr.AllProviders.Contains (LocationManager.GpsProvider)
-				&& locMgr.IsProviderEnabled (LocationManager.GpsProvider)) {
-				locMgr.RequestLocationUpdates (LocationManager.GpsProvider, 2000, 1, this);
-			} else {
-				Toast.MakeText (this, "The Network Provider does not exist or is not enabled!", ToastLength.Long).Show ();
+			if (MainActivity._currentLocation != null) {
+				loc.Latitude = MainActivity._currentLocation.Latitude;
+				loc.Longitude = MainActivity._currentLocation.Longitude;
 			}
 
+			latitude.Text = loc.Latitude.ToString();
+			longitude.Text = loc.Longitude.ToString();
+
+			setGeoCoder (loc, location);
 		}
 
-		protected override void OnPause ()
+		async void setGeoCoder(Location loc, TextView location)
 		{
-			base.OnPause ();
 
-			// stop sending location updates when the application goes into the background
-			// to learn about updating location in the background, refer to the Backgrounding guide
-			// http://docs.xamarin.com/guides/cross-platform/application_fundamentals/backgrounding/
+			Geocoder geocoder = new Geocoder(this);
+			IList<Address> addressList = await geocoder.GetFromLocationAsync(loc.Latitude, loc.Longitude, 10);
 
-
-			// RemoveUpdates takes a pending intent - here, we pass the current Activity
-			locMgr.RemoveUpdates (this);
-			Log.Debug (tag, "Location updates paused because application is entering the background");
+			Address address = addressList.FirstOrDefault();
+			if (address != null)
+			{
+				StringBuilder deviceAddress = new StringBuilder();
+				for (int i = 0; i < address.MaxAddressLineIndex; i++)
+				{
+					deviceAddress.Append(address.GetAddressLine(i))
+						.AppendLine(",");
+				}
+				location.Text = deviceAddress.ToString();
+			}
+			else
+			{
+				location.Text = "No se puede determinar la ubicación.";
+			}
 		}
-
-		protected override void OnStop ()
-		{
-			base.OnStop ();
-			Log.Debug (tag, "OnStop called");
-		}
-
-		public void OnLocationChanged (Android.Locations.Location location)
-		{
-			Log.Debug (tag, "Location changed");
-			latitude.Text = "Latitude: " + location.Latitude.ToString();
-			longitude.Text = "Longitude: " + location.Longitude.ToString();
-			this.s_latitude = location.Latitude.ToString ();
-			this.s_longitude = location.Longitude.ToString ();
-		}
-		public void OnProviderDisabled (string provider)
-		{
-			Log.Debug (tag, provider + " disabled by user");
-		}
-		public void OnProviderEnabled (string provider)
-		{
-			Log.Debug (tag, provider + " enabled by user");
-		}
-		public void OnStatusChanged (string provider, Availability status, Bundle extras)
-		{
-			Log.Debug (tag, provider + " availability has changed to " + status.ToString());
-		}
-
+	
+			
 		public override bool OnCreateOptionsMenu (IMenu menu)
 		{
 			MenuInflater.Inflate (Resource.Menu.NewRoomActions, menu);
@@ -137,7 +108,7 @@ namespace FabSample
 			if(item.ItemId == Resource.Id.action_new_room)
 			{
 				EditText t = (EditText)FindViewById(Resource.Id.editText1);
-				RestClient.Instance ().newRoom (t.Text, this.s_latitude, this.s_longitude, "dqw12d81d2");
+				RestClient.Instance ().newRoom (t.Text, MainActivity._currentLocation.Latitude.ToString(), MainActivity._currentLocation.Longitude.ToString(), "dqw12d81d2");
 				Toast.MakeText(this.BaseContext, "Sala Creada", ToastLength.Short).Show();
 				this.Finish ();
 			}
