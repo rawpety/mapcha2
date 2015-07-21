@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+	  xmlns:mapcha="http://schemas.android.com/apk/res-auto" >
+	<item android:id="@+id/action_down_vote"
+          android:icon="@drawable/ic_keyboard_arrow_down_white_24dp"
+          android:title="@string/action_down_vote" 
+          mapcha:showAsAction="ifRoom"/>
+    <item android:id="@+id/action_up_vote"
+          android:icon="@drawable/ic_keyboard_arrow_up_white_24dp"
+          android:title="@string/action_up_vote" 
+          mapcha:showAsAction="ifRoom"/>
+</menu>

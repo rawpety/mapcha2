@@ -6,6 +6,8 @@
 	<string name="chat_room">Sala de Chat</string>
 	<string name="new_room">Crear nueva sala</string>
 	<string name="action_new_room">Crear nueva sala</string>
+	<string name="action_up_vote">Voto positivo</string>
+	<string name="action_down_vote">Voto negativo</string>
     <string name="about_body">
           <![CDATA[
         <p>Sebastian Del Campo</p>

@@ -112,9 +112,8 @@ namespace FabSample
 				Toast.MakeText(this.BaseContext, "Sala Creada", ToastLength.Short).Show();
 				this.Finish ();
 			}
-			if(item.ItemId == Resource.Id.home)
+			else
 			{
-				Toast.MakeText(this.BaseContext, "jom", ToastLength.Short).Show();
 				this.Finish ();
 			}
 			return base.OnOptionsItemSelected(item);
