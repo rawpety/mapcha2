@@ -17,6 +17,8 @@ namespace FabSample
 	{
 		public int RoomId { get { return Arguments.GetInt("RoomId", 0); } }
 		List<Message> Messages = new List<Message>();
+		Button imageButton;
+
 		private ListView MessagesListView;
 		public static RoomChatFragment NewInstance(int RoomId)
 		{
@@ -36,13 +38,14 @@ namespace FabSample
 			Messages = crd.Messages;
 			if (!crd.Available) {
 				EditText et = (EditText)View.FindViewById (Resource.Id.message);
+				imageButton = (Button)View.FindViewById (Resource.Id.Send);
 				et.Hint = "No estás lo suficientemente cerca de la Sala para comentar";
 				et.Enabled = false;
+				imageButton.Enabled = false;
 			}
 			MessagesListView = (ListView)View.FindViewById (Resource.Id.MessagesList);
 			MessagesListView.Adapter = new ChatListAdapter(Activity, Messages);
 		}
-
 
 	}
 }
