@@ -60,10 +60,13 @@ namespace FabSample
 
 			if(item.ItemId == Resource.Id.action_up_vote)
 			{
+				RestClient.Instance ().votePositive (RoomId);
+
 				Toast.MakeText(this.BaseContext, "Up Vote", ToastLength.Short).Show();
 			}
 			else if(item.ItemId == Resource.Id.action_down_vote)
 			{
+				RestClient.Instance ().voteNegative (RoomId);
 				Toast.MakeText(this.BaseContext, "Down Vote", ToastLength.Short).Show();
 			}
 			else

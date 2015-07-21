@@ -42,7 +42,7 @@ namespace FabSample
 			base.OnCreate (bundle);
 			InitActionBar ();
 			_isGooglePlayServicesInstalled = TestIfGooglePlayServicesIsInstalled ();
-			android_id = Android.Provider.Settings.Secure.GetString(Context.ContentResolver,
+			android_id = Android.Provider.Settings.Secure.GetString(BaseContext.ContentResolver,
 				Android.Provider.Settings.Secure.AndroidId); 
 			if (_isGooglePlayServicesInstalled) {
 				//SetContentView(Resource.Layout.Main);
