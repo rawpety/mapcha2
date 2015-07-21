@@ -17,6 +17,7 @@ namespace FabSample
 	{
 		public int RoomId { get { return Arguments.GetInt("RoomId", 0); } }
 		List<Message> Messages = new List<Message>();
+
 		private ListView MessagesListView;
 		public static RoomChatFragment NewInstance(int RoomId)
 		{
@@ -45,6 +46,7 @@ namespace FabSample
 				button.Enabled = false;
 				et.Hint = "No estás lo suficientemente cerca de la Sala para comentar";
 				et.Enabled = false;
+				button.Enabled = false;
 			}
 
 
