@@ -108,7 +108,7 @@ namespace FabSample
 			if(item.ItemId == Resource.Id.action_new_room)
 			{
 				EditText t = (EditText)FindViewById(Resource.Id.editText1);
-				RestClient.Instance ().newRoom (t.Text, MainActivity._currentLocation.Latitude.ToString(), MainActivity._currentLocation.Longitude.ToString(), "dqw12d81d2");
+				RestClient.Instance ().newRoom (t.Text, MainActivity._currentLocation.Latitude.ToString(), MainActivity._currentLocation.Longitude.ToString());
 				Toast.MakeText(this.BaseContext, "Sala Creada", ToastLength.Short).Show();
 				this.Finish ();
 			}
