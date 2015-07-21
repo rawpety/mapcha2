@@ -17,7 +17,6 @@ namespace FabSample
 	{
 		public int RoomId { get { return Arguments.GetInt("RoomId", 0); } }
 		List<Message> Messages = new List<Message>();
-		Button imageButton;
 
 		private ListView MessagesListView;
 		public static RoomChatFragment NewInstance(int RoomId)
@@ -36,16 +35,30 @@ namespace FabSample
 			base.OnActivityCreated(savedInstanceState);
 			ChatRoomData crd = RestClient.Instance().getMessagesByRoom (RoomId);
 			Messages = crd.Messages;
+			var button = (ImageButton)View.FindViewById(Resource.Id.Send);
+			EditText et = (EditText)View.FindViewById (Resource.Id.message);
+			button.Click += (sender, ea) => {
+				RestClient.Instance().newMessage(RoomId, et.Text);
+				et.Text = "";
+				UpdateList();
+			};
+
 			if (!crd.Available) {
-				EditText et = (EditText)View.FindViewById (Resource.Id.message);
-				imageButton = (Button)View.FindViewById (Resource.Id.Send);
+				button.Enabled = false;
 				et.Hint = "No estás lo suficientemente cerca de la Sala para comentar";
 				et.Enabled = false;
-				imageButton.Enabled = false;
+				button.Enabled = false;
 			}
+
 			MessagesListView = (ListView)View.FindViewById (Resource.Id.MessagesList);
 			MessagesListView.Adapter = new ChatListAdapter(Activity, Messages);
 		}
 
+		public void UpdateList(){
+			ChatRoomData crd = RestClient.Instance().getMessagesByRoom (RoomId);
+			Messages = crd.Messages;
+			MessagesListView = (ListView)View.FindViewById (Resource.Id.MessagesList);
+			MessagesListView.Adapter = new ChatListAdapter(Activity, Messages);
+		}
 	}
 }

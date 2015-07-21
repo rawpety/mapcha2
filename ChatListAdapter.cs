@@ -38,8 +38,15 @@ namespace FabSample
 			var item = Messages[position];
 			//View view = context.LayoutInflater.Inflate(Android.Resource.Layout.SimpleListItem2, null);
 			View view = convertView;
-			if (view == null)
-				view = context.LayoutInflater.Inflate(Resource.Layout.ChatItem, null);
+			if (view == null) {
+				if (item.AuthorId.Equals (MainActivity.android_id)) {
+					view = context.LayoutInflater.Inflate (Resource.Layout.ChatItem_Reversed, null);
+				} else {
+					view = context.LayoutInflater.Inflate (Resource.Layout.ChatItem, null);
+				}
+
+			}
+				
 			view.FindViewById<TextView>(Resource.Id.Text1).Text = item.Content;
 			view.FindViewById<ImageView>(Resource.Id.Icon).SetImageResource(Resource.Drawable.Icon);
 

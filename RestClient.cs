@@ -77,7 +77,7 @@ namespace FabSample
 			var response = client.Execute (request);
 		}
 
-		public void newMessage(string Room_Id, string Content){
+		public void newMessage(int Room_Id, string Content){
 			var request = new RestRequest("mapcha/Messages/new.php", Method.POST);
 			request.AddParameter ("Room_Id", Room_Id);
 			request.AddParameter ("Author_Id", MainActivity.android_id);
