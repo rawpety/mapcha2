@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginRight="100dp"
+    android:orientation="vertical"
+    android:gravity="right">
+    <TextView
+        android:id="@+id/Text1"
+        android:layout_margin="5sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bubble_white_normal_reversed"
+        android:textColor="#000000"
+        android:text="Medium Text Lorem ipsum An Adapter object acts as a bridge between an AdapterView and the underlying data for that view. The Adapter provides access to the data items. The Adapter is also responsible for making a View for each item in the data set"
+        android:textSize="14sp" />
+    <ImageView
+        android:layout_toRightOf="@id/Text1"
+        android:id="@+id/Icon"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentTop="true"
+        android:contentDescription="TODO"
+        android:src="@drawable/Icon" />
+</RelativeLayout>

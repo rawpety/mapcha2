@@ -182,6 +182,8 @@
     <AndroidResource Include="Resources\drawable-xhdpi\ic_send_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_send_white_24dp.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_send_white_24dp.png" />
+    <AndroidResource Include="Resources\layout\ChatItem_Reversed.axml" />
+    <AndroidResource Include="Resources\drawable\bubble_white_normal_reversed.9.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
