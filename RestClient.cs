@@ -2,6 +2,7 @@
 using RestSharp;
 using RestSharp.Deserializers;
 using System.Collections.Generic;
+using Android.Locations;
 
 namespace FabSample
 {
@@ -37,20 +38,33 @@ namespace FabSample
 			return rooms;
 		}
 
-		public List<Message> getMessagesByRoom(int RoomId){
+		public ChatRoomData getMessagesByRoom(int RoomId){
 			var request = new RestRequest("mapcha/Messages/by_room.php", Method.GET);
+
+			Location loc = new Location ("loc");
+
+			loc.Latitude = MainActivity.lastKnownLocation.Latitude;
+			loc.Longitude = MainActivity.lastKnownLocation.Longitude;
+
+			if (MainActivity._currentLocation != null) {
+				loc.Latitude = MainActivity._currentLocation.Latitude;
+				loc.Longitude = MainActivity._currentLocation.Longitude;
+			}
+
 			request.AddParameter ("room", RoomId);
+			request.AddParameter ("latitude", loc.Latitude);
+			request.AddParameter ("longitude", loc.Longitude);
+
 
 			var response = client.Execute (request);
 
 			RestSharp.Deserializers.JsonDeserializer deserial= new JsonDeserializer();
 			List<Message> Messages = new List<Message> ();
+			ChatRoomData crd = new ChatRoomData ();
 
-			if (response.Content.Length != 6) {
-				Messages = deserial.Deserialize<List<Message>> (response);
-			}
+			crd = deserial.Deserialize<ChatRoomData> (response);
 				
-			return Messages;
+			return crd;
 		}
 
 		public void newRoom(string Title, string Latitude, string Longitude, string AuthorId){

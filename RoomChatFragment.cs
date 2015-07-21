@@ -32,7 +32,13 @@ namespace FabSample
 		public override void OnActivityCreated(Bundle savedInstanceState)
 		{
 			base.OnActivityCreated(savedInstanceState);
-			Messages = RestClient.Instance().getMessagesByRoom (RoomId);
+			ChatRoomData crd = RestClient.Instance().getMessagesByRoom (RoomId);
+			Messages = crd.Messages;
+			if (!crd.Available) {
+				EditText et = (EditText)View.FindViewById (Resource.Id.message);
+				et.Hint = "No estás lo suficientemente cerca de la Sala para comentar";
+				et.Enabled = false;
+			}
 			MessagesListView = (ListView)View.FindViewById (Resource.Id.MessagesList);
 			MessagesListView.Adapter = new ChatListAdapter(Activity, Messages);
 		}
