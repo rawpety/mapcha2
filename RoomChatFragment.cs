@@ -34,15 +34,24 @@ namespace FabSample
 			base.OnActivityCreated(savedInstanceState);
 			ChatRoomData crd = RestClient.Instance().getMessagesByRoom (RoomId);
 			Messages = crd.Messages;
+			var button = (ImageButton)View.FindViewById(Resource.Id.Send);
+			EditText et = (EditText)View.FindViewById (Resource.Id.message);
+			button.Click += (sender, ea) => {
+				RestClient.Instance().newMessage(RoomId, et.Text);
+				et.Text = "";
+			};
+
 			if (!crd.Available) {
-				EditText et = (EditText)View.FindViewById (Resource.Id.message);
+				button.Enabled = false;
 				et.Hint = "No estás lo suficientemente cerca de la Sala para comentar";
 				et.Enabled = false;
 			}
+
+
+
+
 			MessagesListView = (ListView)View.FindViewById (Resource.Id.MessagesList);
 			MessagesListView.Adapter = new ChatListAdapter(Activity, Messages);
 		}
-
-
 	}
 }

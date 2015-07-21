@@ -1,14 +1,14 @@
 ﻿<Properties GitUserInfo="UsingGIT" StartupItem="FabSample.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.SelectDevice" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="ChatRoomData.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Android.192.168.59.103:5555" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RoomChatFragment.cs">
     <Files>
-      <File FileName="ChatListAdapter.cs" Line="25" Column="47" />
-      <File FileName="RoomListAdapter.cs" Line="42" Column="67" />
-      <File FileName="RoomChatActivity.cs" Line="23" Column="55" />
-      <File FileName="RoomChatFragment.cs" Line="37" Column="49" />
+      <File FileName="ChatListAdapter.cs" Line="1" Column="1" />
+      <File FileName="RoomListAdapter.cs" Line="1" Column="1" />
+      <File FileName="RoomChatActivity.cs" Line="1" Column="1" />
+      <File FileName="RoomChatFragment.cs" Line="34" Column="47" />
       <File FileName="Resources\values\strings.xml" Line="1" Column="1" />
       <File FileName="ChatRoomData.cs" Line="10" Column="27" />
-      <File FileName="Message.cs" Line="7" Column="30" />
+      <File FileName="Message.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
