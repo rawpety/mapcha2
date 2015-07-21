@@ -1696,14 +1696,17 @@ namespace FabSample
 			// aapt resource value: 0x7f0b0054
 			public const int Icon = 2131427412;
 			
+			// aapt resource value: 0x7f0b0056
+			public const int MessagesList = 2131427414;
+			
 			// aapt resource value: 0x7f0b0055
 			public const int Text1 = 2131427413;
 			
-			// aapt resource value: 0x7f0b0066
-			public const int Text2 = 2131427430;
+			// aapt resource value: 0x7f0b0065
+			public const int Text2 = 2131427429;
 			
-			// aapt resource value: 0x7f0b0068
-			public const int about = 2131427432;
+			// aapt resource value: 0x7f0b0067
+			public const int about = 2131427431;
 			
 			// aapt resource value: 0x7f0b0046
 			public const int action_bar = 2131427398;
@@ -1744,8 +1747,8 @@ namespace FabSample
 			// aapt resource value: 0x7f0b0035
 			public const int action_mode_close_button = 2131427381;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int action_new_room = 2131427433;
+			// aapt resource value: 0x7f0b0068
+			public const int action_new_room = 2131427432;
 			
 			// aapt resource value: 0x7f0b0036
 			public const int activity_chooser_view_content = 2131427382;
@@ -1801,14 +1804,11 @@ namespace FabSample
 			// aapt resource value: 0x7f0b001c
 			public const int dropdown = 2131427356;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int editText1 = 2131427426;
+			// aapt resource value: 0x7f0b0061
+			public const int editText1 = 2131427425;
 			
 			// aapt resource value: 0x7f0b0048
 			public const int edit_query = 2131427400;
-			
-			// aapt resource value: 0x7f0b0058
-			public const int email_address = 2131427416;
 			
 			// aapt resource value: 0x7f0b0014
 			public const int end = 2131427348;
@@ -1819,8 +1819,8 @@ namespace FabSample
 			// aapt resource value: 0x7f0b003d
 			public const int expanded_menu = 2131427389;
 			
-			// aapt resource value: 0x7f0b0059
-			public const int fab = 2131427417;
+			// aapt resource value: 0x7f0b0058
+			public const int fab = 2131427416;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int grayscale = 2131427376;
@@ -1849,11 +1849,11 @@ namespace FabSample
 			// aapt resource value: 0x7f0b0038
 			public const int image = 2131427384;
 			
-			// aapt resource value: 0x7f0b0064
-			public const int latitude = 2131427428;
+			// aapt resource value: 0x7f0b0063
+			public const int latitude = 2131427427;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int linearLayout1 = 2131427424;
+			// aapt resource value: 0x7f0b005f
+			public const int linearLayout1 = 2131427423;
 			
 			// aapt resource value: 0x7f0b0009
 			public const int listMode = 2131427337;
@@ -1861,29 +1861,32 @@ namespace FabSample
 			// aapt resource value: 0x7f0b003a
 			public const int list_item = 2131427386;
 			
-			// aapt resource value: 0x7f0b0065
-			public const int longitude = 2131427429;
+			// aapt resource value: 0x7f0b0064
+			public const int longitude = 2131427428;
 			
-			// aapt resource value: 0x7f0b005a
-			public const int mapWithOverlay = 2131427418;
+			// aapt resource value: 0x7f0b0059
+			public const int mapWithOverlay = 2131427417;
 			
 			// aapt resource value: 0x7f0b002a
 			public const int match_parent = 2131427370;
 			
-			// aapt resource value: 0x7f0b005e
-			public const int media_route_control_frame = 2131427422;
+			// aapt resource value: 0x7f0b005d
+			public const int media_route_control_frame = 2131427421;
 			
-			// aapt resource value: 0x7f0b005f
-			public const int media_route_disconnect_button = 2131427423;
+			// aapt resource value: 0x7f0b005e
+			public const int media_route_disconnect_button = 2131427422;
+			
+			// aapt resource value: 0x7f0b005a
+			public const int media_route_list = 2131427418;
 			
 			// aapt resource value: 0x7f0b005b
-			public const int media_route_list = 2131427419;
+			public const int media_route_volume_layout = 2131427419;
 			
 			// aapt resource value: 0x7f0b005c
-			public const int media_route_volume_layout = 2131427420;
+			public const int media_route_volume_slider = 2131427420;
 			
-			// aapt resource value: 0x7f0b005d
-			public const int media_route_volume_slider = 2131427421;
+			// aapt resource value: 0x7f0b0057
+			public const int message = 2131427415;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int middle = 2131427349;
@@ -1893,9 +1896,6 @@ namespace FabSample
 			
 			// aapt resource value: 0x7f0b0031
 			public const int monochrome = 2131427377;
-			
-			// aapt resource value: 0x7f0b0057
-			public const int my_fragment = 2131427415;
 			
 			// aapt resource value: 0x7f0b0019
 			public const int never = 2131427353;
@@ -1917,9 +1917,6 @@ namespace FabSample
 			
 			// aapt resource value: 0x7f0b0040
 			public const int radio = 2131427392;
-			
-			// aapt resource value: 0x7f0b0056
-			public const int relativeLayout1 = 2131427414;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int sandbox = 2131427366;
@@ -1987,17 +1984,17 @@ namespace FabSample
 			// aapt resource value: 0x7f0b0022
 			public const int terrain = 2131427362;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int textView1 = 2131427425;
+			// aapt resource value: 0x7f0b0060
+			public const int textView1 = 2131427424;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int textView2 = 2131427427;
+			// aapt resource value: 0x7f0b0062
+			public const int textView2 = 2131427426;
 			
 			// aapt resource value: 0x7f0b003c
 			public const int title = 2131427388;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int titles_fragment = 2131427431;
+			// aapt resource value: 0x7f0b0066
+			public const int titles_fragment = 2131427430;
 			
 			// aapt resource value: 0x7f0b0008
 			public const int up = 2131427336;

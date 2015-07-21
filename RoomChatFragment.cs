@@ -13,10 +13,11 @@ using Android.Widget;
 
 namespace FabSample
 {
-	public class RoomChatFragment : ListFragment
+	public class RoomChatFragment : Fragment
 	{
 		public int RoomId { get { return Arguments.GetInt("RoomId", 0); } }
 		List<Message> Messages = new List<Message>();
+		private ListView MessagesListView;
 		public static RoomChatFragment NewInstance(int RoomId)
 		{
 			var detailsFrag = new RoomChatFragment { Arguments = new Bundle() };
@@ -24,13 +25,16 @@ namespace FabSample
 			return detailsFrag;
 		}
 
+		public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+			return inflater.Inflate(Resource.Layout.ChatList, container, false);
+		}
+
 		public override void OnActivityCreated(Bundle savedInstanceState)
 		{
 			base.OnActivityCreated(savedInstanceState);
 			Messages = RestClient.Instance().getMessagesByRoom (RoomId);
-
-
-			ListAdapter = new ChatListAdapter(Activity, Messages);
+			MessagesListView = (ListView)View.FindViewById (Resource.Id.MessagesList);
+			MessagesListView.Adapter = new ChatListAdapter(Activity, Messages);
 		}
 
 
